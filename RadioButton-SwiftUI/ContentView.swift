@@ -8,14 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
+    let data = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+    @State private var selectedOption: String = ""
+
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            Text(selectedOption)
+            
+            RadioButtonsGroup(options: data, selectedOption: $selectedOption)
+                .optionForegroundColor(.black)
+                .selectedOptionForegroundColor(.white)
+                .foregroundColor(.black)
         }
-        .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color(.systemGray4))
     }
 }
 
