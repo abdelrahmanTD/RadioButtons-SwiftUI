@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct RadioButtonsGroup<Option>: View where Option: Hashable & CustomStringConvertible {
+public struct RadioButtonsGroup<Option>: View where Option: Hashable & CustomStringConvertible {
     private let orientation: LayoutOrientation
     private let options: [Option]
     @Binding private var selectedOption: Option
@@ -16,7 +16,7 @@ struct RadioButtonsGroup<Option>: View where Option: Hashable & CustomStringConv
     @State private var optionForegroundColor: Color?
     @State private var selectedOptionForegroundColor: Color?
 
-    init(
+    public init(
         orientation: LayoutOrientation = .vertical,
         options: [Option],
         selectedOption: Binding<Option>
@@ -26,7 +26,7 @@ struct RadioButtonsGroup<Option>: View where Option: Hashable & CustomStringConv
         self._selectedOption = selectedOption
     }
 
-    var body: some View {
+    public var body: some View {
         let layout = orientation == .vertical
         ? AnyLayout(VStackLayout(alignment: .leading))
         : AnyLayout(HStackLayout())
@@ -56,11 +56,14 @@ struct RadioButtonsGroup<Option>: View where Option: Hashable & CustomStringConv
         }
     }
 
-    enum LayoutOrientation {
+    public enum LayoutOrientation {
         case horizontal
         case vertical
     }
 }
+
+// MARK: - View's ViewModifiers
+
 
 extension RadioButtonsGroup {
     public func optionForegroundColor(_ color: Color?) -> RadioButtonsGroup {
@@ -75,6 +78,8 @@ extension RadioButtonsGroup {
         return view
     }
 }
+
+// MARK: - Previews
 
 struct RadioButtonsGroup_Previews: PreviewProvider {
     struct MockRadioButtonsGroup: View {
