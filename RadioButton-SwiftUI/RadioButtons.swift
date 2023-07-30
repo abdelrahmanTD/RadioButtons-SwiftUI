@@ -8,21 +8,63 @@
 
 import SwiftUI
 
+/// A view that display a group of radio buttons.
+///
+/// A radio buttons group view presents a group of options for selecting a
+/// single option from multiple options. It requires its options to conform to
+/// `Hashable` and `CustomStringConvertible` protocols.
+///
+/// The conformance to `Hashable` is necessary to uniquely identify each option,
+/// while conformance to `CustomStringConvertible` enables displaying the
+/// options’s description as a label.
+///
+/// ### Usage Example
+///
+/// ```swift
+/// let colors = ["Red", "Green", "Blue"]
+/// @State private var selectedColor: String = ""
+///
+/// var body: some View {
+///     VStack(alignment: .leading) {
+///         Text("Select your favorite color:")
+///
+///         RadioButtons(options: colors, selectedOption: $selectedColor)
+///             .optionForegroundColor(.black)
+///             .selectedOptionForegroundColor(.blue)
+///     }
+/// }
+/// ```
 public struct RadioButtons<Option>: View where Option: Hashable & CustomStringConvertible {
+    /// The layout orientation of the radio buttons.
     private let orientation: LayoutOrientation
 
+    /// An array of options to be displayed as radio buttons.
     private let options: [Option]
 
+    /// A binding to the currently selected radio button.
     @Binding private var selectedOption: Option
 
     // MARK: - Modifier Variables
 
+    /// The foreground color of the radio buttons when not selected.
     @State private var optionForegroundColor: Color?
 
+    /// The foreground color of the selected radio button.
     @State private var selectedOptionForegroundColor: Color?
 
     // MARK: - Initialization
 
+    /// Creates a radio buttons view with the provided options.
+    ///
+    /// - Parameters:
+    ///     - orientation: The layout orientation of the radio buttons. It can
+    ///     be either `.horizontal` or `.vertical` layout. Default is vertically
+    ///     layout.
+    ///
+    ///     - options: Array of options to be displayed as radio buttons.
+    ///
+    ///     - selectedOptions: Binding to the currently selected option. This
+    ///     value will be updated when the user selects a differ option.
     public init(
         orientation: LayoutOrientation = .vertical,
         options: [Option],
@@ -35,6 +77,7 @@ public struct RadioButtons<Option>: View where Option: Hashable & CustomStringCo
 
     // MARK: - Body
 
+    /// The content and behavior of the view.
     public var body: some View {
         let layout = orientation == .vertical
         ? AnyLayout(VStackLayout(alignment: .leading))
@@ -96,9 +139,13 @@ struct RadioButtons_Previews: PreviewProvider {
 // MARK: - Radio Buttons Layout
 
 extension RadioButtons {
+    /// A representation for available layout orientation of the radio buttons
+    /// group.
     public enum LayoutOrientation {
+        /// Laying out radio buttons horizontally.
         case horizontal
 
+        /// Laying out radio buttons vertically.
         case vertical
     }
 }
@@ -106,12 +153,32 @@ extension RadioButtons {
 // MARK: - View's ViewModifiers
 
 extension RadioButtons {
+    /// Sets the foreground color of the radio buttons.
+    ///
+    /// - Parameter color: The radio button foreground color to use when
+    /// displaying this view. Pass `nil` to remove any custom foreground color.
+    /// If a container doesn’t specify any color, the system uses the default
+    /// color for `Button`.
+    ///
+    /// - Returns: A modified `RadioButtons` with the specified foreground
+    /// color for radio buttons.
+    ///
+    /// - Important:
     public func optionForegroundColor(_ color: Color?) -> RadioButtons {
         var view = self
         view._optionForegroundColor = State(initialValue: color)
         return view
     }
 
+    /// Sets the foreground color of the selected radio button.
+    ///
+    /// - Parameter color: The selected radio button foreground color to use
+    /// when displaying this view. Pass `nil` to remove any custom foreground
+    /// color. If a container doesn’t specify any color, the system uses the
+    /// default color for `Button`.
+    ///
+    /// - Returns: A modified `RadioButtons` with the specified foreground
+    /// color for the selected radio buttons.
     public func selectedOptionForegroundColor(_ color: Color?) -> RadioButtons {
         var view = self
         view._selectedOptionForegroundColor = State(initialValue: color)
