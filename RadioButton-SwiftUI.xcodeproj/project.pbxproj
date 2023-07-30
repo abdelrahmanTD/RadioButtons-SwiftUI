@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		362310262A759729004734A6 /* RadioButtonsGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362310252A759729004734A6 /* RadioButtonsGroup.swift */; };
+		362310262A759729004734A6 /* RadioButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362310252A759729004734A6 /* RadioButtons.swift */; };
 		369894B42A757CC400EC3195 /* RadioButton_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369894B32A757CC400EC3195 /* RadioButton_SwiftUIApp.swift */; };
 		369894B62A757CC400EC3195 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369894B52A757CC400EC3195 /* ContentView.swift */; };
 		369894B82A757CC600EC3195 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 369894B72A757CC600EC3195 /* Assets.xcassets */; };
@@ -15,7 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		362310252A759729004734A6 /* RadioButtonsGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonsGroup.swift; sourceTree = "<group>"; };
+		362310252A759729004734A6 /* RadioButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtons.swift; sourceTree = "<group>"; };
 		369894B02A757CC400EC3195 /* RadioButton-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RadioButton-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		369894B32A757CC400EC3195 /* RadioButton_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton_SwiftUIApp.swift; sourceTree = "<group>"; };
 		369894B52A757CC400EC3195 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -55,7 +55,7 @@
 			children = (
 				369894B32A757CC400EC3195 /* RadioButton_SwiftUIApp.swift */,
 				369894B52A757CC400EC3195 /* ContentView.swift */,
-				362310252A759729004734A6 /* RadioButtonsGroup.swift */,
+				362310252A759729004734A6 /* RadioButtons.swift */,
 				369894B72A757CC600EC3195 /* Assets.xcassets */,
 				369894B92A757CC600EC3195 /* Preview Content */,
 			);
@@ -140,7 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				362310262A759729004734A6 /* RadioButtonsGroup.swift in Sources */,
+				362310262A759729004734A6 /* RadioButtons.swift in Sources */,
 				369894B62A757CC400EC3195 /* ContentView.swift in Sources */,
 				369894B42A757CC400EC3195 /* RadioButton_SwiftUIApp.swift in Sources */,
 			);

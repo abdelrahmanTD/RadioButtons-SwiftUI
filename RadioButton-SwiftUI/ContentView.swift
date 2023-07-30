@@ -15,7 +15,7 @@ struct ContentView: View {
         VStack {
             Text(selectedOption)
             
-            RadioButtonsGroup(options: data, selectedOption: $selectedOption)
+            RadioButtons(options: data, selectedOption: $selectedOption)
                 .optionForegroundColor(.black)
                 .selectedOptionForegroundColor(.white)
                 .foregroundColor(.black)

@@ -1,5 +1,5 @@
 //
-//  RadioButtonsGroup.swift
+//  RadioButtons.swift
 //  RadioButton-SwiftUI
 //
 //  Created on Saturday, July 29, 2023
@@ -8,13 +8,20 @@
 
 import SwiftUI
 
-public struct RadioButtonsGroup<Option>: View where Option: Hashable & CustomStringConvertible {
+public struct RadioButtons<Option>: View where Option: Hashable & CustomStringConvertible {
     private let orientation: LayoutOrientation
+
     private let options: [Option]
+
     @Binding private var selectedOption: Option
 
+    // MARK: - Modifier Variables
+
     @State private var optionForegroundColor: Color?
+
     @State private var selectedOptionForegroundColor: Color?
+
+    // MARK: - Initialization
 
     public init(
         orientation: LayoutOrientation = .vertical,
@@ -25,6 +32,8 @@ public struct RadioButtonsGroup<Option>: View where Option: Hashable & CustomStr
         self.options = options
         self._selectedOption = selectedOption
     }
+
+    // MARK: - Body
 
     public var body: some View {
         let layout = orientation == .vertical
@@ -55,28 +64,6 @@ public struct RadioButtonsGroup<Option>: View where Option: Hashable & CustomStr
             }
         }
     }
-
-    public enum LayoutOrientation {
-        case horizontal
-        case vertical
-    }
-}
-
-// MARK: - View's ViewModifiers
-
-
-extension RadioButtonsGroup {
-    public func optionForegroundColor(_ color: Color?) -> RadioButtonsGroup {
-        var view = self
-        view._optionForegroundColor = State(initialValue: color)
-        return view
-    }
-
-    public func selectedOptionForegroundColor(_ color: Color?) -> RadioButtonsGroup {
-        var view = self
-        view._selectedOptionForegroundColor = State(initialValue: color)
-        return view
-    }
 }
 
 // MARK: - Previews
@@ -91,17 +78,43 @@ struct RadioButtonsGroup_Previews: PreviewProvider {
 
         var body: some View {
             VStack(spacing: 20) {
-                RadioButtonsGroup(options: data1, selectedOption: $selectedOption1)
+                RadioButtons(options: data1, selectedOption: $selectedOption1)
                     .optionForegroundColor(.brown)
                     .selectedOptionForegroundColor(.cyan)
                     .foregroundColor(.black)
 
-                RadioButtonsGroup(orientation: .horizontal, options: data2, selectedOption: $selectedOption2)
+                RadioButtons(orientation: .horizontal, options: data2, selectedOption: $selectedOption2)
             }
         }
     }
 
     static var previews: some View {
         MockRadioButtonsGroup()
+    }
+}
+
+// MARK: - Radio Buttons Layout
+
+extension RadioButtons {
+    public enum LayoutOrientation {
+        case horizontal
+
+        case vertical
+    }
+}
+
+// MARK: - View's ViewModifiers
+
+extension RadioButtons {
+    public func optionForegroundColor(_ color: Color?) -> RadioButtons {
+        var view = self
+        view._optionForegroundColor = State(initialValue: color)
+        return view
+    }
+
+    public func selectedOptionForegroundColor(_ color: Color?) -> RadioButtons {
+        var view = self
+        view._selectedOptionForegroundColor = State(initialValue: color)
+        return view
     }
 }
