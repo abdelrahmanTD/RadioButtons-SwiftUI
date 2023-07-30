@@ -68,8 +68,8 @@ public struct RadioButtons<Option>: View where Option: Hashable & CustomStringCo
 
 // MARK: - Previews
 
-struct RadioButtonsGroup_Previews: PreviewProvider {
-    struct MockRadioButtonsGroup: View {
+struct RadioButtons_Previews: PreviewProvider {
+    struct MockRadioButtons: View {
         let data1 = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
         @State private var selectedOption1: String = ""
 
@@ -89,7 +89,7 @@ struct RadioButtonsGroup_Previews: PreviewProvider {
     }
 
     static var previews: some View {
-        MockRadioButtonsGroup()
+        MockRadioButtons()
     }
 }
 
